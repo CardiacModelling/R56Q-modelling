@@ -18,7 +18,7 @@ It is recommended to install libraries and run scripts in a virtual environment 
 ### Voltage protocols
 
 For calibration and validation of the mathematical model, this study used a novel collection of protocols (shown below), including the previously-described 'staircase' protocol by [(Lei _et al._, 2019)](https://www.sciencedirect.com/science/article/pii/S0006349519305971).
-<img src="https://github.com/CardiacModelling/R56Q-modelling/blob/main/figures/Paper_figures/full-protocol.png" height="400">
+<img src="https://github.com/CardiacModelling/R56Q-modelling/blob/main/figures/Paper_figures/full-protocol.png" height="300">
 
 ### Experimental data
 
