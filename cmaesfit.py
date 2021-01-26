@@ -15,7 +15,7 @@ parser.add_argument('--model', type=int, default=2, metavar='N',
                     help='model number : 1 for CCOI, 2 for M10')
 parser.add_argument('--mutant', type=int, default=1, metavar='N',
                     help='mutant number : 1 for WT, 2 for R56Q')
-parser.add_argument('-r', '--repeats', type=int, default=25, metavar='N',
+parser.add_argument('-r', '--repeats', type=int, default=20, metavar='N',
                     help='number of CMA-ES runs from different initial guesses')
 parser.add_argument('-p', '--protocol', type=int, default=2, metavar='N',
                     help='which protocol is used to fit the data: 1 for sine wave, 2 for staircase #1, etc.')
