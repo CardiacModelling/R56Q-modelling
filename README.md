@@ -35,11 +35,11 @@ The parameter inference in this study uses the [CMA-ES](https://www.mitpressjour
 - `python cmaesfit.py` and
 - `python cmaesfit.p --mutant 2`
 
-for WT and R56Q, respectively. Each of these could take several hours running in parallel, so are best performed using a HPC resource. The number of repeats can be reduced from the default 25 using the `--repeats` input argument, although this may not explore the parameter space sufficiently to find a global minimum. The default model used, described as `M10` throughout the code, corresponds to the structure shown below (also in manuscript Figure 9A):
+for WT and R56Q, respectively. Each of these could take several hours running in parallel, so are best performed using a HPC resource. The number of repeats can be reduced from the default 20 using the `--repeats` input argument, although this may not explore the parameter space sufficiently to find a global minimum. The default model used, described as `M10` throughout the code, corresponds to the structure shown below (also in manuscript Figure 9A). The code also supports inference for a C-C-O-I structure hERG model (labelled `CCOI` in the code), which can be toggled by changing the `--model` input argument. 
 
 <img src="https://github.com/CardiacModelling/R56Q-modelling/blob/main/figures/Paper_figures/markov-chain.png">
 
-Once finished, the results of the CMA-ES optimisation are deposited in [cmaesfits/](https://github.com/CardiacModelling/R56Q-modelling/tree/main/cmaesfits). The maximum likelihood estimate parameters for the default runs can be found in `WT-model-M10-fit-staircase1-artefact.txt` and `R56Q-model-M10-fit-staircase1-artefact.txt` for WT and R56Q, respectively. Detailed breakdowns of the scores and parameters for each repeat can be found in the accompanying `parameter` and `log` files.
+Once finished, the results of the CMA-ES optimisation are deposited in [cmaesfits/](https://github.com/CardiacModelling/R56Q-modelling/tree/main/cmaesfits). The maximum likelihood estimate parameters for the default runs can be found in `WT-model-M10-fit-staircase1-artefact.txt` and `R56Q-model-M10-fit-staircase1-artefact.txt` for WT and R56Q, respectively. Detailed breakdowns of the scores and parameters for each repeat can be found in the accompanying `parameter` and `log` files. For convenience, the files used to generate the actual modelling data in the manuscript, along with detailed parameter and score logs, can be found already in [cmaesfits/](https://github.com/CardiacModelling/R56Q-modelling/tree/main/cmaesfits).
 
 ### Plotting results
 
