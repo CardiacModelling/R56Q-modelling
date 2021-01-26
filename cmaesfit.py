@@ -33,7 +33,6 @@ import model
 np.random.seed(1)
 
 # Get string and protocols for each mutant
-# Set Ek based on cell-specific estimate
 if args.mutant == 1:
     mutant_str = 'WT'
 else:
@@ -81,10 +80,10 @@ else:
     sys.exit()
 
 trans = transformation.Transformation()
-x_found = x_found
 for i in range(no_cells):
-    x_found = np.append(x_found, 0.07)
+    x_found = np.append(x_found, 0.07) # Guess conductance
 x_initial = trans.transform(no_cells=no_cells, parameters=x_found, which_model=args.model)
+# Set Ek based on cell-specific estimate
 ek = cells.ek_computed()
 
 filename = 'cmaesfits/' + mutant_str + '-model-' + model_str + '-fit-' + protocol_str + '-artefact'
@@ -130,7 +129,7 @@ for cell in cs:
 
         log = data.load(cell, protocol, mutant_str)
         time = log.time()
-        current = log['current'] / 1000 #change units from pA to nA
+        current = log['current'] / 1000 # Change units from pA to nA
         
         debug = False
         if debug:
