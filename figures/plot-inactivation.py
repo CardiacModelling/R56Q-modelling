@@ -43,15 +43,7 @@ pr_steps_inact = [
     (126000, 1000), #40
 ]
 
-pr_steps_deact = [
-    (6005, 8000), #-140
-    (26005, 8000), #-110
-    (46005, 8000), #-80
-    (66005, 8000), #-50
-]
-
 pr_voltages_inact = np.array([-140, -110, -80, -50, -20, 10, 40])
-pr_voltages_deact = np.array([-140, -110, -80, -50])
 
 # Get model
 p = myokit.load_protocol('../model-and-protocols/inactivation-ramp.mmt')
@@ -64,8 +56,6 @@ else:
     mutant_str = 'R56Q'
 
 ek = cells.ek_computed()
-
-print('Reversal potential ' + str(ek) + ' mV')
 
 if args.protocol == 1:
     protocol_str = 'sine-wave'
@@ -127,7 +117,6 @@ no_cells = len(cs)
 RPRS = ['no-RPR', 'RPR']
 
 exp_iss_vs, exp_iss_ins, v1s, g1s = [], [], [], []
-exp_deact_vs, exp_deact_is, v2s, g2s = [], [], [], []
 
 for c in cs:
 
@@ -208,8 +197,6 @@ for c in cs:
         m.get('ikr.p' + str(n_params+1)).set_rhs(g)
         m.get('voltage_clamp.V_off').set_rhs(Voff)
 
-        print('Updating model to steady-state for ' + str(ss_V) + ' mV')
-
         mm = markov.LinearModel(m, states, parameters, current)
 
         if r == 'no-RPR':
@@ -217,7 +204,6 @@ for c in cs:
         else:
             mutant_str = mutant_str + '-RPR'
             x = mm.steady_state(ss_V, x_found[n_params:2*n_params])
-        print(x)
         for i in range(len(states)):
             m.get(states[i]).set_state_value(x[i])
 
@@ -280,36 +266,24 @@ for c in cs:
 
         # Compute inactivation curve
         v1, g1, voltages1, peaks1 = biomarkers.steady_state_inactivation(pr_steps_inact, pr_voltages_inact, log=d, include_minus_90=False, erev=ek, normalise=True)
-        v2, g2 = biomarkers.time_constant_of_deactivation(pr_steps_deact, pr_voltages_deact, log=d, erev=ek)
 
         ng1 = g1 / np.max(g1)
 
         import scipy.interpolate as sp
 
         interp = sp.interp1d(v1, g1, kind='cubic')
-        interp2 = sp.interp1d(v2, g2, kind='cubic')
         xnew = np.linspace(-140, 40, 50)
-        xnew2 = np.linspace(-140, -50, 50)
 
         a2 = np.loadtxt('Biomarkers/exp/inact_ss_exp_' + mutant_str + '_cell' + str(cell) + '.txt', unpack=True)
-        b2 = np.loadtxt('Biomarkers/exp/inact_deact_exp_' + mutant_str + '_cell' + str(cell) + '.txt', unpack=True)
 
         exp_iss_v = a2[0] - LJP
         exp_iss_i = a2[1] / 1000 #get the right units
         exp_iss_in = a2[2]
 
-        exp_deact_v = b2[0] - LJP
-        exp_deact_i = b2[1]
-
         exp_iss_vs.append(exp_iss_v)
         exp_iss_ins.append(exp_iss_in)
         v1s.append(v1)
         g1s.append(g1)
-
-        exp_deact_vs.append(exp_deact_v)
-        exp_deact_is.append(exp_deact_i)
-        v2s.append(v2)
-        g2s.append(g2)
 
         if r == 'no-RPR':
             for k in range(n_steps):
@@ -396,69 +370,4 @@ if args.show == True:
     pl.show()
 else:
     filename = 'Biomarkers/Inactivation-SS-biomarker-' + mutant_str + '-model-' + model_str + '-fit-' + protocol_str
-    pl.savefig('PNG_figures/' + filename + '.png')
-
-fig = pl.figure(figsize=(5, 3), dpi=args.dpi)
-
-ax1 = fig.add_subplot(2, 3, 1)
-[label.set_visible(False) for label in ax1.get_xticklabels()]
-ax1.set_ylabel(r'Deactivation $\tau$' + '\n' + 'Control (ms)', fontsize=9)
-pl.scatter(exp_deact_vs[0], exp_deact_is[0], s=50, facecolors='none', edgecolors=defaults[0], marker='o', linewidth=1)
-pl.plot(v2s[0] - LJP, g2s[0], c=defaults[0], linestyle='--', linewidth=1)
-ax1.grid(True)
-ax1.text(0.25, 0.85, 'Cell 1',
-        horizontalalignment='center',
-        transform=ax1.transAxes)
-ax2 = fig.add_subplot(2, 3, 2)
-[label.set_visible(False) for label in ax2.get_xticklabels()]
-[label.set_visible(False) for label in ax2.get_yticklabels()]
-pl.scatter(exp_deact_vs[2], exp_deact_is[2], s=50, facecolors='none', edgecolors=defaults[1], marker='o', linewidth=1)
-pl.plot(v2s[2] - LJP, g2s[2], c=defaults[1], linestyle='--', linewidth=1)
-ax2.grid(True)
-ax2.text(0.25, 0.85, 'Cell 2',
-        horizontalalignment='center',
-        transform=ax2.transAxes)
-ax3 = fig.add_subplot(2, 3, 3)
-[label.set_visible(False) for label in ax3.get_xticklabels()]
-[label.set_visible(False) for label in ax3.get_yticklabels()]
-pl.scatter(exp_deact_vs[4], exp_deact_is[4], s=50, facecolors='none', edgecolors=defaults[2], marker='o', linewidth=1)
-pl.plot(v2s[4] - LJP, g2s[4], c=defaults[2], linestyle='--', linewidth=1)
-ax3.grid(True)
-ax3.text(0.25, 0.85, 'Cell 3',
-        horizontalalignment='center',
-        transform=ax3.transAxes)
-ax4 = fig.add_subplot(2, 3, 4)
-ax4.set_xlabel('Voltage (mV)', fontsize=9)
-ax4.set_ylabel(r'Deactivation $\tau$' + '\n' + 'RPR (ms)', fontsize=9)
-pl.scatter(exp_deact_vs[1], exp_deact_is[1], s=50, facecolors='none', edgecolors=defaults[0], marker='o', linewidth=1)
-pl.plot(v2s[1] - LJP, g2s[1], c=defaults[0], linestyle='--', linewidth=1)
-ax4.grid(True)
-ax4.text(0.25, 0.85, 'Cell 1',
-        horizontalalignment='center',
-        transform=ax4.transAxes)
-ax5 = fig.add_subplot(2, 3, 5)
-[label.set_visible(False) for label in ax5.get_yticklabels()]
-ax5.set_xlabel('Voltage (mV)', fontsize=9)
-pl.scatter(exp_deact_vs[3], exp_deact_is[3], s=50, facecolors='none', edgecolors=defaults[1], marker='o', linewidth=1)
-pl.plot(v2s[3] - LJP, g2s[3], c=defaults[1], linestyle='--', linewidth=1)
-ax5.grid(True)
-ax5.text(0.25, 0.85, 'Cell 2',
-        horizontalalignment='center',
-        transform=ax5.transAxes)
-ax6 = fig.add_subplot(2, 3, 6)
-[label.set_visible(False) for label in ax6.get_yticklabels()]
-ax6.set_xlabel('Voltage (mV)', fontsize=9)
-pl.scatter(exp_deact_vs[5], exp_deact_is[5], s=50, facecolors='none', edgecolors=defaults[2], marker='o', linewidth=1)
-pl.plot(v2s[5] - LJP, g2s[5], c=defaults[2], linestyle='--', linewidth=1)
-ax6.grid(True)
-ax6.text(0.25, 0.85, 'Cell 3',
-        horizontalalignment='center',
-        transform=ax6.transAxes)
-
-pl.tight_layout()
-
-if args.show == True:
-    pl.show()
-else:
-    filename = 'Biomarkers/Inactivation-deact-biomarker-' + mutant_str + '-model-' + model_str + '-fit-' + protocol_str
     pl.savefig('PNG_figures/' + filename + '.png')
