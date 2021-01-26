@@ -15,7 +15,7 @@ p.rc('ytick', direction='out')
 
 # Check input arguments
 parser = argparse.ArgumentParser(
-    description='Plot model and experimental data')
+    description='Plot model parameters')
 parser.add_argument('--model', type=int, default=2, metavar='N',
                     help='model number : 1 for CCOI, 2 for M10')
 parser.add_argument('-p', '--protocol', type=int, default=2, metavar='N',

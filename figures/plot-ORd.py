@@ -8,7 +8,7 @@ from mpl_toolkits.axes_grid1.inset_locator import mark_inset
 import argparse
 
 parser = argparse.ArgumentParser(
-    description='Plot model and experimental data')
+    description='Plot ORd model results')
 parser.add_argument("--RPR", action='store_true',
                     help="whether to use R56Q-RPR or not",
                     default=False)

@@ -5,7 +5,7 @@ import numpy as np
 import argparse
 
 parser = argparse.ArgumentParser(
-    description='Plot model and experimental data')
+    description='Plot ORd model results')
 parser.add_argument("--show", action='store_true',
                     help="whether to show figures instead of saving them",
                     default=False)

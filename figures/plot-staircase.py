@@ -21,7 +21,7 @@ parser = argparse.ArgumentParser(
 parser.add_argument('--model', type=int, default=2, metavar='N',
                     help='model number : 1 for CCOI, 2 for M10')
 parser.add_argument('--mutant', type=int, default=1, metavar='N',
-                    help='mutant number : 1 for WT, 2 for R56Q, 3 for WT+RPR, 4 for R56Q+RPR')
+                    help='mutant number : 1 for WT, 2 for R56Q')
 parser.add_argument('-p', '--protocol', type=int, default=2, metavar='N',
                     help='which protocol is used to fit the data: 1 for sine wave, 2 for staircase #1')
 parser.add_argument("--show", action='store_true',
