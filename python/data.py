@@ -69,7 +69,7 @@ def load(cell, protocol, mutant_str, cached=None):
     else:
         print('Loading ' + data_file + '.csv')
         log = myokit.DataLog.load_csv(data_file + '.csv').npview()
-        # log.save(data_file + '.zip') # Don't save zip during development
+        log.save(data_file + '.zip')
 
     # Apply capacitance filtering
     dt = 0.1
@@ -92,7 +92,7 @@ def load(cell, protocol, mutant_str, cached=None):
 
 def load_model(which_model):
     """
-    Loads the HH version of the Beattie model.
+    Loads the selected model.
     """
     if which_model == 1:
         return myokit.load_model(os.path.join(MODEL, 'CCOI-ikr-markov-voffset.mmt'))
@@ -102,8 +102,7 @@ def load_model(which_model):
 
 def load_myokit_protocol(protocol):
     """
-    Loads the Myokit protocol with the given index (1-7). For Pr6 and Pr7, the
-    protocol only has the steps for capacitance filtering.
+    Loads the Myokit protocol with the given index (1-8).
     """
     protocol_files = {
         1: os.path.join(PROTO, 'sine-wave-ramp-steps.mmt'),
@@ -124,7 +123,7 @@ def load_myokit_protocol(protocol):
 
 def load_ap_protocol():
     """
-    Returns a tuple ``(times, values)`` representing Pr6.
+    Returns a tuple ``(times, values)`` representing AP protocol.
     """
     data_file = os.path.join(DATA, 'Protocols', 'AP-protocol')
 
@@ -142,7 +141,7 @@ def load_ap_protocol():
 
 def load_RPR_protocol(cell, mutant_str):
     """
-    Returns a tuple ``(times, values)`` representing Pr6.
+    Returns a tuple ``(times, values)`` representing PPR protocol.
     """
     if cell in {4, 5} and mutant_str in {'WT', 'WT-RPR'}:
         data_file = os.path.join(DATA, 'Protocols', 'RPR-protocol-alt')
