@@ -25,7 +25,7 @@ The voltage clamp waveform itself can be found in `.csv` form in [data/Protocols
 
 ### Experimental data
 
-Experimental data obtained from the above electrophysiology protocol (recorded at 37C in HEK cells) have been processed, separated into constituent protocols, and stored in folders in [data/](https://github.com/CardiacModelling/R56Q-modelling/tree/main/data). The data are named according to `[protocol]-[mutant]-cell-[cell number].csv`, and are stored in sub-folders according to protocol. The activation protocol data for WT, cell 2 can thus be found in `activation-WT-cell-2.csv` in the [data/Activation/](https://github.com/CardiacModelling/R56Q-modelling/blob/main/data/Activation) folder.
+Experimental data obtained from the above electrophysiology protocol (recorded at 37C in HEK cells) have been processed, separated into constituent protocols, and stored in [data/](https://github.com/CardiacModelling/R56Q-modelling/tree/main/data). The data are named according to `[protocol]-[mutant]-cell-[cell number].csv`, and are stored in sub-folders according to protocol. The activation protocol data for WT, cell 2 can thus be found in `activation-WT-cell-2.csv` in the [data/Activation/](https://github.com/CardiacModelling/R56Q-modelling/blob/main/data/Activation) folder.
 
 ## Running
 
