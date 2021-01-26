@@ -5,9 +5,9 @@
 from __future__ import division
 import numpy as np
 
-def steady_state_activation(pr_steps,pr_voltages,log=None,normalise=False):
+def steady_state_activation(pr_steps, pr_voltages, log=None, normalise=False):
     """
-    Returns the steady state of activation, calculated from Pr3.
+    Returns the steady state of activation.
 
     Arguments:
 
@@ -42,9 +42,9 @@ def steady_state_activation(pr_steps,pr_voltages,log=None,normalise=False):
 
     return voltages, cpeaks
 
-def iv_curve_activation(pr_steps,pr_voltages,log=None,normalise=False):
+def iv_curve_activation(pr_steps, pr_voltages, log=None, normalise=False):
     """
-    Returns the steady state of activation, calculated from Pr3.
+    Returns the steady state of activation.
 
     Arguments:
 
@@ -82,7 +82,7 @@ def iv_curve_activation(pr_steps,pr_voltages,log=None,normalise=False):
 def steady_state_inactivation(
         pr_steps, pr_voltages, log=None, include_minus_90=False, estimate_erev=False, erev=-88, normalise=False):
     """
-    Returns the steady state of inactivation and an iv-curve
+    Returns the steady state of inactivation and an IV curve
 
     Arguments:
 
@@ -128,14 +128,9 @@ def steady_state_inactivation(
     # Return
     return v1, g, voltages, peaks
 
-def time_constant_of_inactivation(pr_steps,pr_voltages,log=None):
+def time_constant_of_inactivation(pr_steps, pr_voltages, log=None):
     """
-    Returns time constants of inactivation, calculated from Pr4.
-
-    Arguments:
-
-    ``pr4_log``
-        An optional datalog with the data for the given cell.
+    Returns time constants of inactivation.
 
     Returns a tuple ``(voltages, time_constants)`` where ``voltages`` and
     ``time_constants`` are lists of equal lengths.
@@ -161,10 +156,9 @@ def time_constant_of_inactivation(pr_steps,pr_voltages,log=None):
         return a + b * np.exp(-t / c)
 
     taus = []
-    for k, step in enumerate(steps): #steps is the iterable
+    for k, step in enumerate(steps):
         i, j = step
         imin = i + np.argmin(current[i:i + j])
-        # print(imin)
         t = time[i:imin] - time[i]
         c = current[i:imin]
 
@@ -183,9 +177,9 @@ def time_constant_of_inactivation(pr_steps,pr_voltages,log=None):
 
     return voltages, taus
 
-def time_constant_of_deactivation(pr_steps,pr_voltages,log=None,erev=-88):
+def time_constant_of_deactivation(pr_steps, pr_voltages, log=None, erev=-88):
     """
-    Returns time constants of inactivation, calculated from Pr4.
+    Returns time constants of inactivation.
 
     Arguments:
 
@@ -216,14 +210,13 @@ def time_constant_of_deactivation(pr_steps,pr_voltages,log=None,erev=-88):
         return a + b * np.exp(-t / c)
 
     taus = []
-    for k, step in enumerate(steps): #steps is the iterable
+    for k, step in enumerate(steps):
         i, j = step
         v = voltages[k]
         if v < erev:
             ipeak = i + np.argmin(current[i:i + j])
         else:
             ipeak = i + np.argmax(current[i:i + j])
-        # print(ipeak)
         t = time[ipeak:ipeak+1000] - time[ipeak]
         c = current[ipeak:ipeak+1000]
 
