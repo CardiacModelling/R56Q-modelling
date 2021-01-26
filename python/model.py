@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 #
-# Pints ForwardModel that runs simulations with Kylie's model.
-# Sine waves optional
+# Pints ForwardModel that runs simulations with the Markov herg models.
 #
 from __future__ import division, print_function
 import myokit
@@ -14,8 +13,7 @@ from data import model_path
 
 class Model(pints.ForwardModel):
     """
-    Pints ForwardModel that runs simulations with Kylie's model.
-    Sine waves or data protocol optional.
+    Pints ForwardModel that runs simulations with M10 or CCOI model.
 
     Arguments:
 
@@ -26,8 +24,7 @@ class Model(pints.ForwardModel):
         ``sine_wave``
             Set to True if sine-wave protocol is being used.
         ``start_steady``
-            Start at steady state for -80mV. Note that this should be disabled
-            to get Kylie's original results.
+            Start at steady state for 0, -40, or -80mV.
         ``analytical``
             Use an analytical simulation.
 
@@ -62,6 +59,7 @@ class Model(pints.ForwardModel):
         n_kparams = int(self.model.get('misc.n_params').value())
         no_cells = len(cells)
         parameters = np.zeros(2*n_kparams + no_cells)
+
         for i in range(n_kparams):
             parameters[i] = self.model.get('ikr.p' + str(i+1)).value()
             parameters[i+n_kparams] = parameters[i]            
@@ -103,7 +101,7 @@ class Model(pints.ForwardModel):
         self.model.get('voltage_clamp.V_off').set_rhs(Voffs[all_cell_idx])
         self.cell_idx = cell_idx
 
-        # Start at steady-state for -80mV for Claydon 37C data
+        # Start at steady-state for -80 mV for Claydon 37C data
         if self.start_steady:
             print('Updating model to steady-state for ' + str(self.ss_V) + ' mV')
             self.model.get('membrane.V').set_label('membrane_potential')
@@ -231,9 +229,7 @@ class Model(pints.ForwardModel):
             return times * float('inf')
         except myokit.SimulationCancelledError:
             return times * float('inf')
-        # Store membrane potential for debugging
-        #self.simulated_v = d['membrane.V']
 
         # Return
-        return d['ikr.IKr']#, d['membrane.V']
+        return d['ikr.IKr']
 

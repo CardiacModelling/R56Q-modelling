@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 #
-# Pints Boundaries that limit the transition rates in the Beattie et al model.
+# Pints Boundaries that limit the transition rates in the Markov hERG models.
 #
 from __future__ import division, print_function
 import numpy as np
@@ -20,11 +20,11 @@ class LogPrior(pints.LogPrior):
         self.lower_conductance = 2e-2
         self.upper_conductance = 2e-1
 
-        # Limits on p1-p8
-        self.lower_alpha = 1e-7              # Kylie: 1e-7
-        self.upper_alpha = 1e3               # Kylie: 1e3
-        self.lower_beta  = 1e-7              # Kylie: 1e-7
-        self.upper_beta  = 0.4               # Kylie: 0.4
+        # Limits on parameters and rates
+        self.lower_alpha = 1e-7    
+        self.upper_alpha = 1e3              
+        self.lower_beta  = 1e-7              
+        self.upper_beta  = 0.4          
         self.lower_rate  = 1.67e-5
         self.upper_rate  = 1000
 
