@@ -1,15 +1,16 @@
 #!/usr/bin/env bash
 
-# Set DPI
+# Settings
 dpi=300
+fig_num=11
 
 mkdir -p PNG_figures/
 
-echo "Plotting Figure 11, panel A..."
+echo "Plotting Figure $fig_num, panel A..."
 python plot-inactivation.py --dpi "$dpi"
 
-echo "Plotting Figure 11, panel B..."
+echo "Plotting Figure $fig_num, panel B..."
 python plot-inactivation.py --mutant 2 --dpi "$dpi"
 
-mkdir -p PNG_figures/Figure11/
-mv PNG_figures/*.png PNG_figures/Figure11/
+mkdir -p PNG_figures/Figure"$fig_num"/
+mv PNG_figures/*.png PNG_figures/Figure"$fig_num"/
