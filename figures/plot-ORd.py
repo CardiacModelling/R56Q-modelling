@@ -1040,5 +1040,5 @@ mark_inset(ax2, axins, loc1=2, loc2=3, fc="none", ec="0.5")
 if args.show == True:
     plt.show()
 else:
-    filename = 'ORd/ORd-model-RPR-' + str(RPR)
+    filename = 'ORd-model-RPR-' + str(RPR)
     plt.savefig('PNG_figures/' + filename + '.png')

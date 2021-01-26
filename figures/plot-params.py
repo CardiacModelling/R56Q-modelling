@@ -94,5 +94,5 @@ ax1.legend(loc='lower right', ncol=2)
 if args.show == True:
     p.show()
 else:
-    filename = 'Parameters/Params-' + mutant_str + '-model-' + model_str
+    filename = 'Params-' + mutant_str + '-model-' + model_str
     p.savefig('PNG_figures/' + filename + '.png')

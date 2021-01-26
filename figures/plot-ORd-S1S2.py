@@ -1020,5 +1020,5 @@ ax2.grid(True)
 if args.show == True:
     plt.show()
 else:
-    filename = 'ORd/ORd-model-S1S2'
+    filename = 'ORd-model-S1S2'
     plt.savefig('PNG_figures/' + filename + '.png')

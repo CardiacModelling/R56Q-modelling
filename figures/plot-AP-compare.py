@@ -114,7 +114,6 @@ for m in mutants:
     # Run simulation
     m.get('ikr.p'+str(n_params+1)).set_rhs(0.1)
 
-    print('Updating model to steady-state for ' + str(ss_V) + 'mV.')
     m.get('membrane.V').set_label('membrane_potential')
 
     mm = markov.LinearModel(m, states, parameters, current)
@@ -207,5 +206,5 @@ mark_inset(a1, axins, loc1=2, loc2=1, fc="none", ec="0.5")
 if args.show == True:
     pl.show()
 else:
-    filename = 'AP/AP-R56Q-compare-model-' + model_str
+    filename = 'AP-R56Q-compare-model-' + model_str
     pl.savefig('PNG_figures/' + filename + '.png')

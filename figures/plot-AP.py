@@ -51,8 +51,6 @@ else:
 
 ek = cells.ek_computed()
 
-print('Reversal potential ' + str(ek) + ' mV')
-
 if args.protocol == 1:
     protocol_str = 'sine-wave'
 elif args.protocol == 2:
@@ -171,8 +169,6 @@ for c in cs:
         m.get('ikr.p' + str(n_params+1)).set_rhs(g)
         m.get('voltage_clamp.V_off').set_rhs(Voff)
 
-        print('Updating model to steady-state for ' + str(ss_V) + ' mV')
-
         mm = markov.LinearModel(m, states, parameters, current)
 
         if r == 'no-RPR':
@@ -180,7 +176,6 @@ for c in cs:
         else:
             mutant_str = mutant_str + '-RPR'
             x = mm.steady_state(ss_V, x_found[n_params:2*n_params])
-        print(x)
         for i in range(len(states)):
             m.get(states[i]).set_state_value(x[i])
 
@@ -297,4 +292,4 @@ for c in cs:
         pl.show()
     else:
         filename = 'AP-protocol-' + mutant_str + '-model-' + model_str + '-prediction-' + protocol_str + '-cell-' + str(cell)
-        pl.savefig('PNG_figures/AP/' + filename + '.png')
+        pl.savefig('PNG_figures/' + filename + '.png')
