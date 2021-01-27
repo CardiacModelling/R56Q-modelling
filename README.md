@@ -67,7 +67,7 @@ _J. Physiol._ 596, 1813–1828.
 
 Clerx, M., Beattie, K. A., Gavaghan, D. J., Mirams, G. R.
 (2019).
-[Four ways to fit an ion channel model](https://doi.org/10.1016/j.bpj.2019.08.001)
+[Four ways to fit an ion channel model](https://doi.org/10.1016/j.bpj.2019.08.001).
 _Biophysical Journal_, 117, 2420-2437.
 
 Lei, C. L., Clerx, M., Gavaghan, D. J., Polonchuk, L., Mirams, G. R., Wang, K.
@@ -75,7 +75,7 @@ Lei, C. L., Clerx, M., Gavaghan, D. J., Polonchuk, L., Mirams, G. R., Wang, K.
 [Rapid characterisation of hERG channel kinetics I: using an automated high-throughput system](https://doi.org/10.1016/j.bpj.2019.07.029).
 _Biophysical Journal_, 117, 2438-2454.
 
-Lei, C.L., Clerx, M., Whittaker, D.G., Gavaghan D.J., de Boer, T.P. and Mirams, G.R.
+Lei, C. L., Clerx, M., Whittaker, D. G., Gavaghan D. J., de Boer, T. P., Mirams, G. R.
 (2020).
 [Accounting for variability in ion current recordings using a mathematical model of artefacts in voltage-clamp experiments](https://doi.org/10.1098/rsta.2019.0348).
 Philosophical Transactions of the Royal Society A, 378: 20190348.
