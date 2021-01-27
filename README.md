@@ -63,7 +63,7 @@ The scientific approach and coding style in this work owe a lot to the following
 Beattie, K. A., Hill, A. P., Bardenet, R., Cui, Y., Vandenberg, J. I., Gavaghan, D. J., de Boer, T. P., Mirams, G. R.
 (2018).
 [Sinusoidal voltage protocols for rapid characterisation of ion channel kinetics](https://doi.org/10.1113/JP275733).
-_The Journal of Physiology_ 596, 1813–1828.
+_The Journal of Physiology_, 596, 1813–1828.
 
 Clerx, M., Beattie, K. A., Gavaghan, D. J., Mirams, G. R.
 (2019).
