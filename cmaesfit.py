@@ -11,13 +11,13 @@ import argparse
 # Check input arguments
 parser = argparse.ArgumentParser(
     description='Fit a hERG model to electrophysiology data')
-parser.add_argument('--model', type=int, default=2, metavar='N',
+parser.add_argument('--model', type=int, default=2,
                     help='model number : 1 for CCOI, 2 for M10')
-parser.add_argument('--mutant', type=int, default=1, metavar='N',
+parser.add_argument('--mutant', type=int, default=1,
                     help='mutant number : 1 for WT, 2 for R56Q')
-parser.add_argument('-r', '--repeats', type=int, default=20, metavar='N',
+parser.add_argument('-r', '--repeats', type=int, default=20,
                     help='number of CMA-ES runs from different initial guesses')
-parser.add_argument('-p', '--protocol', type=int, default=2, metavar='N',
+parser.add_argument('-p', '--protocol', type=int, default=2,
                     help='which protocol is used to fit the data: 1 for sine wave, 2 for staircase #1, etc.')
 args = parser.parse_args()
 
@@ -33,26 +33,21 @@ import model
 np.random.seed(1)
 
 # Get string and protocols for each mutant
-if args.mutant == 1:
-    mutant_str = 'WT'
-else:
-    mutant_str = 'R56Q'
-
 protocol = args.protocol
 
-if args.protocol == 1:
+if protocol == 1:
     protocol_str = 'sine-wave'
-elif args.protocol == 2:
+elif protocol == 2:
     protocol_str = 'staircase1'
-elif args.protocol == 3:
+elif protocol == 3:
     protocol_str = 'staircase2'
-elif args.protocol == 4:
+elif protocol == 4:
     protocol_str = 'activation'
-elif args.protocol == 5:
+elif protocol == 5:
     protocol_str = 'inactivation'
-elif args.protocol == 6:
+elif protocol == 6:
     protocol_str = 'complex-AP'
-elif args.protocol == 7:
+elif protocol == 7:
     protocols = [2, 7]
     protocol_str = 'staircase1-conductance'
 else:
@@ -60,9 +55,11 @@ else:
     protocol_str = 'conductance'
 
 if args.mutant == 1:
+    mutant_str = 'WT'
     mutants = ['WT', 'WT-RPR']
     cs = [1, 2, 4]
 else:
+    mutant_str = 'R56Q'
     mutants = ['R56Q', 'R56Q-RPR']
     cs = [1, 5, 6]
 
@@ -71,19 +68,20 @@ no_cells = len(cs)
 # Get model string and params
 if args.model == 1:
     model_str = 'CCOI'
-    x_found = np.loadtxt('cmaesfits/parameter-sets/CCOI-params-' + mutant_str + '.txt', unpack=True)
 elif args.model == 2:
     model_str = 'M10'
-    x_found = np.loadtxt('cmaesfits/parameter-sets/M10-params-' + mutant_str + '.txt', unpack=True)
 else:
     print('Invalid model')
     sys.exit()
 
+x_found = np.loadtxt('cmaesfits/parameter-sets/' + model_str + '-params-' + mutant_str + '.txt', unpack=True)
+
 trans = transformation.Transformation()
 for i in range(no_cells):
-    x_found = np.append(x_found, 0.07) # Guess conductance
+    x_found = np.append(x_found, 0.07) # Assign conductance to all cells
 x_initial = trans.transform(no_cells=no_cells, parameters=x_found, which_model=args.model)
-# Set Ek based on cell-specific estimate
+
+# Set Ek based on solutions
 ek = cells.ek_computed()
 
 filename = 'cmaesfits/' + mutant_str + '-model-' + model_str + '-fit-' + protocol_str + '-artefact'
@@ -173,7 +171,7 @@ for i in range(repeats):
     print('Repeat ' + str(1 + i))
 
     # Choose random starting point
-    if i < 18:
+    if i < 10:
         fac = np.random.normal(1.0, 0.1, len(x_initial))
         q0 = fac*x_initial
     else:
@@ -192,7 +190,7 @@ for i in range(repeats):
             b.reset()
             q, s = opt.run()            # Search space
             times.append(b.time())
-            p = trans.detransform(q,args.model)    # Model space
+            p = trans.detransform(q, args.model)    # Model space
             params.append(p)
             scores.append(-s)
     except ValueError:
