@@ -63,7 +63,7 @@ The scientific approach and coding style in this work owe a lot to the following
 Beattie, K. A., Hill, A. P., Bardenet, R., Cui, Y., Vandenberg, J. I., Gavaghan, D. J., de Boer, T. P., Mirams, G. R.
 (2018).
 [Sinusoidal voltage protocols for rapid characterisation of ion channel kinetics](https://doi.org/10.1113/JP275733).
-_J. Physiol._ 596, 1813–1828.
+_The Journal of Physiology_ 596, 1813–1828.
 
 Clerx, M., Beattie, K. A., Gavaghan, D. J., Mirams, G. R.
 (2019).
@@ -78,5 +78,5 @@ _Biophysical Journal_, 117, 2438-2454.
 Lei, C. L., Clerx, M., Whittaker, D. G., Gavaghan D. J., de Boer, T. P., Mirams, G. R.
 (2020).
 [Accounting for variability in ion current recordings using a mathematical model of artefacts in voltage-clamp experiments](https://doi.org/10.1098/rsta.2019.0348).
-Philosophical Transactions of the Royal Society A, 378: 20190348.
+_Philosophical Transactions of the Royal Society A_, 378: 20190348.
 
