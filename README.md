@@ -14,9 +14,9 @@ install virtualenv python3``` will install these packages.
 It is recommended to install libraries and run this repository's scripts in a virtual environment to avoid version conflicts between different projects. To create such a virtual environment open a terminal and do the following:
 - Clone the repository (for example, by using git clone https://github.com/CardiacModelling/R56Q-Modelling)
 - Type `cd R56Q-Modelling` to navigate inside the repository
-- Set up a virtual environment using `virtualenv --python=python3 venv`. 
-- Activate the virtual environment using `source venv/bin/activate`. 
-- Install the required packages by typing `pip install -r requirements.txt`
+- Set up a virtual environment using `virtualenv --python=python3 venv`
+- Activate the virtual environment using `source venv/bin/activate`
+- Install the required packages by typing `pip install -r requirements.txt`.
 
 When you are finished working with the repository, type `deactivate` to exit the
 virtual environment. The virtual environment can be used again with the
@@ -47,7 +47,8 @@ Experimental data obtained from the above electrophysiology protocol (recorded a
 The parameter inference in this study uses the [CMA-ES](https://www.mitpressjournals.org/doi/abs/10.1162/106365603321828970) algorithm to search the parameter space. To reproduce the parameter fitting, generate fits for WT and R56Q by running
 - `python cmaesfit.py` and
 - `python cmaesfit.py --mutant 2`.
-Each of these could take several hours running in parallel, so are best performed using a HPC resource. The number of repeats can be reduced from the default 20 using the `--repeats` input argument, although this may not explore the parameter space sufficiently to find a global minimum. The default model used, described as `M10` throughout the code, corresponds to the structure shown below (taken from manuscript Figure 9). The code also supports inference for a C-C-O-I structure hERG model (labelled `CCOI` in the code), which can be toggled by changing the `--model` input argument. 
+
+Each of these could take several hours running in parallel, so are best performed using a HPC resource. The number of repeats can be reduced from the default 20 using the `--repeats` input argument, although this may not explore the parameter space sufficiently to find a global minimum. The default model used, described as `M10` throughout the code, corresponds to the structure shown below (taken from manuscript Figure 9). The code also supports inference for a C-C-O-I structure hERG model (labelled `CCOI` in the code), which can be toggled by changing the `--model` input argument.
 
 <img src="https://github.com/CardiacModelling/R56Q-modelling/blob/main/figures/Paper_figures/markov-chain.png">
 
@@ -55,9 +56,8 @@ Once finished, the results of the CMA-ES optimisation are deposited in [cmaesfit
 
 ### Plotting results
 
-Most of the plots found in the manuscript are composite plots consisting of multiple, individually-generated panels. Nonetheless, these can be generated easily using Python scripts provided in [figures/](https://github.com/CardiacModelling/R56Q-modelling/tree/main/figures). It is recommended to run the scripts with `--show` to simply check the results on screen, _or_ with `--dpi 300` in order to generate high-quality, publication-standard figures in `.png` format (stored in sub-folders of the [figures/](https://github.com/CardiacModelling/R56Q-modelling/tree/main/figures) directory). Where results from a single cell are shown, these correspond to cell 2 for the WT recordings, and cell 5 for R56Q (which can be identified based on the filename). In order to quickly generate all panels for a given figure, bash scripts are provided. 
+Most of the plots found in the manuscript are composite plots consisting of multiple, individually-generated panels. Nonetheless, these can be generated easily using Python scripts provided in [figures/](https://github.com/CardiacModelling/R56Q-modelling/tree/main/figures). It is recommended to run the scripts with `--show` to simply check the results on screen, _or_ with `--dpi 300` in order to generate high-quality, publication-standard figures in `.png` format (stored in sub-folders of the [figures/](https://github.com/CardiacModelling/R56Q-modelling/tree/main/figures) directory). Where results from a single cell are shown, these correspond to cell 2 for the WT recordings, and cell 5 for R56Q (which can be identified based on the filename). In order to quickly generate all panels for a given figure, BASH scripts are provided. To use them, open a terminal in the figures directory and do the following:
 
-- Navigate to the figures directory with `cd figures`
 - Type `chmod u+x *.sh` to ensure that the scripts are executable
 - Manuscript Figure 9A is a schematic drawing. To generate Figure panels 9B-D, run `./figure9-panels.sh`
 - Similarly, to generate panels for Figures 10-13, run `./figure[figure number]-panels.sh`
@@ -93,4 +93,3 @@ Lei, C. L., Clerx, M., Whittaker, D. G., Gavaghan D. J., de Boer, T. P., Mirams,
 (2020).
 [Accounting for variability in ion current recordings using a mathematical model of artefacts in voltage-clamp experiments](https://doi.org/10.1098/rsta.2019.0348).
 _Philosophical Transactions of the Royal Society A_, 378: 20190348.
-
