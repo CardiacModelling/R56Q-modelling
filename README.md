@@ -1,26 +1,21 @@
 # Modelling the effects of the R56Q hERG channel mutation
 
-This repository contains scripts for optimising models of the cardiac hERG ion channel to wild type (WT) and R56Q mutant hERG channel electrophysiology data using [Myokit](http://myokit.org) and [PINTS](https://github.com/pints-team/pints) modules in Python.
-This code is associated with the paper:
+This repository contains scripts for optimising models of the cardiac hERG ion channel to wild type (WT) and R56Q mutant hERG channel electrophysiology data using [Myokit](http://myokit.org) and [PINTS](https://github.com/pints-team/pints) modules in Python. This code is associated with the paper:
 
 ***"The hERG channel activator, RPR260243, reduces arrhythmogenicity of the R56Q LQTS mutation by enhancing repolarizing drive in the refractory period"*** (Currently under review). Kemp, J. M., Whittaker, D. G., Venkateshappa, R., Pang, Z., Johal, R., Sergeev, V., Tibbits, G. F., Mirams, G. R., Claydon, T. W.
 
 ## Prerequisites
-The instructions in this Section assume that you are using a Linux distribution
-with `python3`, `pip` and `virutalenv` installed. For example, if you are using
-__Ubuntu 20.04.1 LTS_, running the command ```sudo apt update``` followed by
-```sudo apt install virtualenv python3``` will install these packages.
+The instructions in this section assume that you are using a Linux distribution with `python3`, `pip` and `virutalenv` installed. For example, if you are using _Ubuntu 20.04.1 LTS_, running the command ```sudo apt update``` followed by ```sudo apt install virtualenv python3``` will install these packages.
 
-It is recommended to install libraries and run this repository's scripts in a virtual environment to avoid version conflicts between different projects. To create such a virtual environment open a terminal and do the following:
-- Clone the repository (for example, by using git clone https://github.com/CardiacModelling/R56Q-Modelling)
-- Type `cd R56Q-Modelling` to navigate inside the repository
+It is recommended to install libraries and run this repository's scripts in a virtual environment to avoid version conflicts between different projects.
+To create such a virtual environment open a terminal and do the following:
+- Clone the repository (for example, by using `git clone https://github.com/CardiacModelling/R56Q-modelling.git`)
+- Type `cd R56Q-modelling` to navigate inside the repository
 - Set up a virtual environment using `virtualenv --python=python3 venv`
 - Activate the virtual environment using `source venv/bin/activate`
 - Install the required packages by typing `pip install -r requirements.txt`.
 
-When you are finished working with the repository, type `deactivate` to exit the
-virtual environment. The virtual environment can be used again with the
-`activate` command as shown above.
+When you are finished working with the repository, type `deactivate` to exit the virtual environment. The virtual environment can be used again with the `activate` command as shown above.
 
 ## Protocols and data
 
@@ -30,11 +25,7 @@ For calibration and validation of the mathematical model, the study used a novel
 
 <img src="https://github.com/CardiacModelling/R56Q-modelling/blob/main/figures/Paper_figures/full-protocol.png">
 
-The voltage clamp waveform itself can be found as a comma-separated values
-(`.csv`) file in
-[data/Protocols/](https://github.com/CardiacModelling/R56Q-modelling/tree/main/data/Protocols)
-called `RPR-protocol.csv`. This contains a list of voltages (in mV) and times
-(in ms) that comprise the protocol at a sampling frequency of 10 kHz.
+The full voltage clamp waveform itself can be found as a comma-separated values (`.csv`) file in [data/Protocols/](https://github.com/CardiacModelling/R56Q-modelling/tree/main/data/Protocols) called `RPR-protocol.csv`. This contains a list of voltages (in mV) and times (in ms) that comprise the protocol at a sampling frequency of 10 kHz.
 
 ### Experimental data
 
@@ -72,7 +63,7 @@ If you publish any work based on the contents of this repository please cite:
 
 ### Related publications
 
-The scientific approach and coding style in this work owe a lot to the following previous, related publications from our lab which may also be of interest:
+The scientific approach and code structure in this work owe a lot to the following previous, related publications from our lab which may also be of interest:
 
 Beattie, K. A., Hill, A. P., Bardenet, R., Cui, Y., Vandenberg, J. I., Gavaghan, D. J., de Boer, T. P., Mirams, G. R.
 (2018).
