@@ -7,9 +7,9 @@ This code is associated with the paper:
 
 ## Prerequisites
 The instructions in this Section assume that you are using a Linux distribution
-with `python3` and `virutalenv` installed. For example, if you are using Ubuntu
-20.04.1 LTS, running the command ```sudo apt update``` followed by ```sudo apt
-install virtualenv python3``` will install these packages.
+with `python3`, `pip` and `virutalenv` installed. For example, if you are using
+__Ubuntu 20.04.1 LTS_, running the command ```sudo apt update``` followed by
+```sudo apt install virtualenv python3``` will install these packages.
 
 It is recommended to install libraries and run this repository's scripts in a virtual environment to avoid version conflicts between different projects. To create such a virtual environment open a terminal and do the following:
 - Clone the repository (for example, by using git clone https://github.com/CardiacModelling/R56Q-Modelling)
