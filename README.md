@@ -2,7 +2,7 @@
 
 This repository contains scripts for optimising models of the cardiac hERG ion channel to wild type (WT) and R56Q mutant hERG channel electrophysiology data using [Myokit](http://myokit.org) and [PINTS](https://github.com/pints-team/pints) modules in Python. This code is associated with the paper:
 
-***"The hERG channel activator, RPR260243, reduces arrhythmogenicity of the R56Q LQTS mutation by enhancing repolarizing drive in the refractory period"*** (Currently under review). Kemp, J. M., Whittaker, D. G., Venkateshappa, R., Pang, Z., Johal, R., Sergeev, V., Tibbits, G. F., Mirams, G. R., Claydon, T. W.
+***"Electrophysiological characterization of the hERG R56Q LQTS variant and targeted rescue by the activator RPR260243"*** (Currently under review). Kemp, J. M., Whittaker, D. G., Venkateshappa, R., Pang, Z., Johal, R., Sergeev, V., Tibbits, G. F., Mirams, G. R., Claydon, T. W.
 
 ## Prerequisites
 The instructions in this section assume that you are using a Linux distribution with `python3`, `pip` and `virutalenv` installed. For example, if you are using _Ubuntu 20.04.1 LTS_, running the command ```sudo apt update``` followed by ```sudo apt install virtualenv python3``` will install these packages.
