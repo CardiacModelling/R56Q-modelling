@@ -11,13 +11,13 @@ import argparse
 # Check input arguments
 parser = argparse.ArgumentParser(
     description='Fit a hERG model to electrophysiology data')
-parser.add_argument('--model', type=int, default=2,
-                    help='model number : 1 for CCOI, 2 for M10')
-parser.add_argument('--mutant', type=int, default=1,
-                    help='mutant number : 1 for WT, 2 for R56Q')
+parser.add_argument('--model', type=int, default=2, choices=[1, 2],
+                    help='model number: 1 for CCOI, 2 for M10')
+parser.add_argument('--mutant', type=int, default=1, choices=[1, 2],
+                    help='mutant number: 1 for WT, 2 for R56Q')
 parser.add_argument('-r', '--repeats', type=int, default=20,
                     help='number of CMA-ES runs from different initial guesses')
-parser.add_argument('-p', '--protocol', type=int, default=2,
+parser.add_argument('-p', '--protocol', type=int, default=2, choices=np.linspace(1, 8, 8),
                     help='which protocol is used to fit the data: 1 for sine wave, 2 for staircase #1, etc.')
 args = parser.parse_args()
 
@@ -34,25 +34,14 @@ np.random.seed(1)
 
 # Get string and protocols for each mutant
 protocol = args.protocol
+protocols_dict = {1: 'sine-wave', 2: 'staircase1', 3: 'staircase2', 4: 'activation', 5: 'inactivation', \
+    6: 'complex-AP', 7: 'staircase1-conductance', 8: 'conductance'}
+protocol_str = protocols_dict[protocol]
 
-if protocol == 1:
-    protocol_str = 'sine-wave'
-elif protocol == 2:
-    protocol_str = 'staircase1'
-elif protocol == 3:
-    protocol_str = 'staircase2'
-elif protocol == 4:
-    protocol_str = 'activation'
-elif protocol == 5:
-    protocol_str = 'inactivation'
-elif protocol == 6:
-    protocol_str = 'complex-AP'
-elif protocol == 7:
+if protocol == 7:
     protocols = [2, 7]
-    protocol_str = 'staircase1-conductance'
-else:
+if protocol == 8:
     protocols = [7]
-    protocol_str = 'conductance'
 
 if args.mutant == 1:
     mutant_str = 'WT'
@@ -66,13 +55,8 @@ else:
 no_cells = len(cs)
 
 # Get model string and params
-if args.model == 1:
-    model_str = 'CCOI'
-elif args.model == 2:
-    model_str = 'M10'
-else:
-    print('Invalid model')
-    sys.exit()
+models_dict = {1: 'CCOI', 2: 'M10'}
+model_str = models_dict[args.model]
 
 x_found = np.loadtxt('cmaesfits/parameter-sets/' + model_str + '-params-' + mutant_str + '.txt', unpack=True)
 
