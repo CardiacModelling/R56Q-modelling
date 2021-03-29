@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
 #
-# Pints ForwardModel that runs simulations with the Markov herg models.
-#
 from __future__ import division, print_function
 import myokit
 import myokit.lib.markov as markov
@@ -19,14 +17,29 @@ class Model(pints.ForwardModel):
 
         ``protocol``
             A myokit.Protocol or a tuple (times, voltage)
+        ``cell``
+            The cell being used    
+        ``cells``
+            The list of cells being used
+        ``mutant``
+            The mutant being simulated           
         ``EK``
             The reversal potential
-        ``sine_wave``
-            Set to True if sine-wave protocol is being used.
-        ``start_steady``
-            Start at steady state for 0, -40, or -80mV.
+        ``which_model``
+            The model being used (M10 or CCOI)  
         ``analytical``
-            Use an analytical simulation.
+            Set to True if using an analytical simulation
+        ``conductance``
+            Set to True if conductance-based protocol is being used
+        ``sine_wave``
+            Set to True if sine-wave protocol is being used
+        ``staircase``
+            Set to True if staircase protocol is being used
+        ``start_steady``
+            Start at steady state for 0, -40, or -80mV
+        ``step``
+            Set to True for protocol starting at different holding potential
+
 
     """
 
@@ -38,22 +51,10 @@ class Model(pints.ForwardModel):
         self.which_model = which_model
         if self.which_model == 1:
             model = myokit.load_model(model_path('CCOI-ikr-markov-voffset.mmt'))
-            self.states = [
-                'ikr.c1',
-                'ikr.c2',
-                'ikr.i',
-                'ikr.o'
-            ]
+            self.states = ['ikr.c1', 'ikr.c2', 'ikr.i', 'ikr.o']
         else:
             model = myokit.load_model(model_path('M10-ikr-markov-voffset.mmt'))
-            self.states = [
-                'ikr.c1',
-                'ikr.c2',
-                'ikr.i',
-                'ikr.ic1',
-                'ikr.ic2',
-                'ikr.o'
-            ]
+            self.states = ['ikr.c1', 'ikr.c2', 'ikr.i', 'ikr.ic1', 'ikr.ic2', 'ikr.o']
         self.model = model
 
         n_kparams = int(self.model.get('misc.n_params').value())

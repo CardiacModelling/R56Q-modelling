@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 #
-# Cell based data and functions
-#
-from __future__ import division
+from __future__ import division, print_function
 import numpy as np
 
 
@@ -53,7 +51,7 @@ def lower_conductance(cell, mutant_str):
 
 def reversal_potential(temperature):
     """
-    Calculates the reversal potential for Potassium ions, using Nernst's
+    Calculates the reversal potential for Potassium ions, using the Nernst
     equation for a given ``temperature`` in degrees celsius and the internal
     and external [K]+ concentrations used in the experiments.
     """

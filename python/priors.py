@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
 #
-# Pints Boundaries that limit the transition rates in the Markov hERG models.
-#
 from __future__ import division, print_function
 import numpy as np
 import pints

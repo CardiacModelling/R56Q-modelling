@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
 #
-# Parameter transformations
-#
 from __future__ import division, print_function
 import numpy as np
 

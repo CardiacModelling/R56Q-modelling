@@ -1,8 +1,5 @@
 #!/usr/bin/env python3
 #
-# Python module that knows where all the data, models, and protocols are, and
-# can load them.
-#
 from __future__ import division, print_function
 import inspect
 import myokit
@@ -39,6 +36,8 @@ def load(cell, protocol, mutant_str, cached=None):
         The cell to use (integer).
     ``protocol``
         The protocol to use (integer)
+    ``mutant_str``
+        The mutant being used (string)   
     ``cached``
         Optional cached data. If given, this will be returned directly.
 
@@ -59,7 +58,7 @@ def load(cell, protocol, mutant_str, cached=None):
     }
     data_file = data_files[protocol]
 
-    # Load protocol for capacitance filtering.
+    # Load protocol for capacitance filtering
     protocol = load_myokit_protocol(protocol)
 
     # Load data from zip or csv

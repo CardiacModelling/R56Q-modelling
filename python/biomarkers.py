@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 #
-# Biomarker based functions
-#
-from __future__ import division
+from __future__ import division, print_function
 import numpy as np
 
 def steady_state_activation(pr_steps, pr_voltages, log=None, normalise=False):
@@ -183,7 +181,7 @@ def time_constant_of_deactivation(pr_steps, pr_voltages, log=None, erev=-88):
 
     Arguments:
 
-    ``pr4_log``
+    ``log``
         An optional datalog with the data for the given cell.
 
     Returns a tuple ``(voltages, time_constants)`` where ``voltages`` and
