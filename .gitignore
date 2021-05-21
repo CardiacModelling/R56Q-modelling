@@ -1,5 +1,8 @@
 # Custom
 **.zip
+figures/*scaled.py
+figures/plot-step-pulse.py
+model-and-protocols/step-pulse.mmt
 
 # Editors
 .vscode/
