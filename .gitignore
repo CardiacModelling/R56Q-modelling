@@ -2,6 +2,7 @@
 **.zip
 figures/*scaled.py
 figures/plot-step-pulse.py
+figures/plot-ORd-BCL.py
 model-and-protocols/step-pulse.mmt
 
 # Editors
