@@ -9,9 +9,14 @@ parser = argparse.ArgumentParser(
 parser.add_argument("--show", action='store_true',
                     help="whether to show figures instead of saving them",
                     default=False)
+parser.add_argument("--ICaL", action='store_true',
+                    help="whether to apply effect of RPR on ICaL",
+                    default=False)
 parser.add_argument('--dpi', type=int, default=100, metavar='N',
                     help='what DPI to use for figures (suggested 300 for publication quality)')
 args = parser.parse_args()
+
+ICaL = args.ICaL
 
 WT = np.loadtxt('../cmaesfits/WT-model-M10-fit-staircase1-artefact.txt', unpack=True)
 R56Q = np.loadtxt('../cmaesfits/R56Q-model-M10-fit-staircase1-artefact.txt', unpack=True)
@@ -35,6 +40,7 @@ types = ['Endocardial', 'Epicardial', 'Midmyocardial']
 
 # Block IKr
 gkr = m.get('ikr.GKr').eval()
+gcal = m.get('ical.PCa').eval()
 m.get('ikr.GKr').set_rhs(fac*gkr)
 
 # Create a pacing protocol
@@ -984,6 +990,8 @@ d3, apds = s.run(bcl*n_APs, apd_threshold=vt)
 
 # R56Q-RPR
 m.get('ikr.base').set_rhs(fac*R56Q_fac*0.038)
+if ICaL:
+    m.get('ical.PCa').set_rhs(gcal*0.9)
 s = myokit.Simulation(m, p, apd_var='membrane.V')
 
 for i, name in enumerate(parameters):
@@ -1020,5 +1028,5 @@ ax2.grid(True)
 if args.show == True:
     plt.show()
 else:
-    filename = 'ORd-model-S1S2'
+    filename = 'ORd-model-S1S2-ICaL-' + str(ICaL)
     plt.savefig('PNG_figures/' + filename + '.png')
