@@ -153,13 +153,13 @@ for c in cs:
     ax5.grid(True)
     ax5.set_xlim([0, 2000])
 
-    ax3 = fig.add_subplot(3,2,5)
+    ax3 = fig.add_subplot(3,2,5, sharey=ax2)
     ax3.set_xlabel( 'Time (ms)', fontsize=9 )
     ax3.set_ylabel( 'Experimental\ncurrent (nA)', fontsize=9 )
     ax3.grid(True)
     ax3.set_xlim([0, 2000])
 
-    ax6 = fig.add_subplot(3,2,6)
+    ax6 = fig.add_subplot(3,2,6, sharey=ax5)
     ax6.set_xlabel( 'Time (ms)' )
     ax6.grid(True)
     ax6.set_xlim([0, 2000])
