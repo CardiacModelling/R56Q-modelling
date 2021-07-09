@@ -14,7 +14,7 @@
    version="1.1"
    id="svg8"
    inkscape:version="1.0.1 (c497b03c, 2020-09-10)"
-   sodipodi:docname="AP-plots.svg">
+   sodipodi:docname="figure13.svg">
   <defs
      id="defs2">
     <style
@@ -439,7 +439,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -448,18 +448,19 @@
      inkscape:groupmode="layer"
      id="layer1">
     <rect
-       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.479444"
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.239722"
        id="rect6260"
-       width="208.88448"
-       height="132.83295"
+       width="104.44224"
+       height="66.416473"
        x="35.560143"
        y="16.231544"
-       inkscape:export-xdpi="300"
-       inkscape:export-ydpi="300" />
+       inkscape:export-xdpi="600"
+       inkscape:export-ydpi="600" />
     <g
        id="g8058"
-       inkscape:export-xdpi="300"
-       inkscape:export-ydpi="300">
+       inkscape:export-xdpi="600"
+       inkscape:export-ydpi="600"
+       transform="matrix(0.5,0,0,0.5,17.780071,8.1157722)">
       <g
          style="stroke-linecap:butt;stroke-linejoin:round"
          id="g1984"

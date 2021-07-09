@@ -13,7 +13,7 @@
    viewBox="0 0 360 288"
    width="360pt"
    id="svg1756"
-   sodipodi:docname="AP-figure.svg"
+   sodipodi:docname="figure12.svg"
    inkscape:version="1.0.1 (c497b03c, 2020-09-10)">
   <metadata
      id="metadata1760">
@@ -41,7 +41,7 @@
      id="namedview1758"
      showgrid="false"
      inkscape:zoom="0.56741864"
-     inkscape:cx="610.00993"
+     inkscape:cx="429.10033"
      inkscape:cy="1145.3059"
      inkscape:window-x="0"
      inkscape:window-y="23"
@@ -5266,11 +5266,12 @@
   </defs>
   <g
      id="line2d_11-7-2"
-     transform="translate(656.27267,315.57775)" />
+     transform="matrix(0.5,0,0,0.5,296.85811,422.35211)" />
   <g
      id="g23048"
-     inkscape:export-xdpi="300"
-     inkscape:export-ydpi="300">
+     inkscape:export-xdpi="600"
+     inkscape:export-ydpi="600"
+     transform="matrix(0.5,0,0,0.5,-31.278223,264.56323)">
     <rect
        style="fill:#ffffff;stroke:none;stroke-width:1.18586;stroke-opacity:1"
        id="rect30680"
