@@ -23,7 +23,7 @@ When you are finished working with the repository, type `deactivate` to exit the
 
 For calibration and validation of the mathematical model, the study used a novel collection of protocols (shown below), including the previously-described 'staircase' protocol by [(Lei _et al._, 2019)](https://www.sciencedirect.com/science/article/pii/S0006349519305971).
 
-<img src="https://github.com/CardiacModelling/R56Q-modelling/blob/main/figures/Paper_figures/full-protocol.png">
+<img src="https://github.com/CardiacModelling/R56Q-modelling/blob/main/figures/Paper_figures/figure8.png">
 
 The full voltage clamp waveform itself can be found as a comma-separated values (`.csv`) file in [data/Protocols/](https://github.com/CardiacModelling/R56Q-modelling/tree/main/data/Protocols) called `RPR-protocol.csv`. This contains a list of voltages (in mV) and times (in ms) that comprise the protocol at a sampling frequency of 10 kHz.
 
