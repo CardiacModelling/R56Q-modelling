@@ -2,7 +2,7 @@
 
 This repository contains scripts for optimising models of the cardiac hERG ion channel to wild type (WT) and R56Q mutant hERG channel electrophysiology data using [Myokit](http://myokit.org) and [PINTS](https://github.com/pints-team/pints) modules in Python. This code is associated with the paper:
 
-***"Electrophysiological characterization of the hERG R56Q LQTS variant and targeted rescue by the activator RPR260243"*** (Accepted in the _Journal of General Physiology_). Kemp, J. M., Whittaker, D. G., Venkateshappa, R., Pang, Z., Johal, R., Sergeev, V., Tibbits, G. F., Mirams, G. R., Claydon, T. W.
+***"Electrophysiological characterization of the hERG R56Q LQTS variant and targeted rescue by the activator RPR260243".*** _J Gen Physiol_ (2021) 153 (10): e202112923. Kemp, J. M., Whittaker, D. G., Venkateshappa, R., Pang, Z., Johal, R., Sergeev, V., Tibbits, G. F., Mirams, G. R., Claydon, T. W.
 
 ## Prerequisites
 The instructions in this section assume that you are using a Linux distribution with `python3`, `pip` and `virutalenv` installed. For example, if you are using _Ubuntu 20.04.1 LTS_, running the command ```sudo apt update``` followed by ```sudo apt install virtualenv python3``` will install these packages.
@@ -57,9 +57,12 @@ All final, composite figure files (pertaining to the _in silico_ modelling) used
 
 ## Acknowledging this work
 
-If you publish any work based on the contents of this repository please cite:
+If you publish any work based on the contents of this repository please cite ([CITATION file](CITATION)):
 
-[PLACEHOLDER]
+Kemp, J. M., Whittaker, D. G., Venkateshappa, R., Pang, Z., Johal, R., Sergeev, V., Tibbits, G. F., Mirams, G. R., Claydon, T. W.
+(2021).
+[Electrophysiological characterization of the hERG R56Q LQTS variant and targeted rescue by the activator RPR260243](https://doi.org/10.1085/jgp.202112923)
+_Journal of General Physiology_ 153 (10): e202112923.
 
 ### Related publications
 
