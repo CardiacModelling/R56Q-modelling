@@ -1009,11 +1009,11 @@ colors = [(0.11765,0.23529,1.0), 'red', 'orange']
 fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(8, 2.5), dpi=args.dpi, constrained_layout=True)
 
 ax1.set_ylabel('Voltage (mV)', fontsize=9)
-ax1.plot(d2['engine.time'], d2['membrane.V'], linewidth=1, c=colors[0])
-ax1.plot(d3['engine.time'], d3['membrane.V'], linewidth=1, c=colors[1])
-ax1.plot(d4['engine.time'], d4['membrane.V'], linewidth=1, c=colors[2])
+ax1.plot(d2['engine.time'], d2['membrane.V'], label='WT', linewidth=1, c=colors[0])
+ax1.plot(d3['engine.time'], d3['membrane.V'], label='R56Q', linewidth=1, c=colors[1])
+ax1.plot(d4['engine.time'], d4['membrane.V'], label='R56Q-RPR', linewidth=1, c=colors[2])
 [label.set_visible(False) for label in ax1.get_xticklabels()]
-ax1.legend(['WT', 'R56Q', 'R56Q-RPR'], fontsize=8, ncol=1, loc='best')
+ax1.legend(fontsize=8, ncol=1, loc='best')
 ax1.set_xlim([8000, 11000])
 ax1.grid(True)
 
