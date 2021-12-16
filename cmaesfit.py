@@ -29,6 +29,14 @@ import transformation
 import data
 import model
 
+import platform
+parallel = True
+if platform.system() == 'Darwin':
+    import multiprocessing
+    multiprocessing.set_start_method('fork')
+elif platform.system() == 'Windows':
+    parallel = False
+
 # Fix seed
 np.random.seed(1)
 
@@ -144,10 +152,17 @@ f = log_posterior
 print('Score at initial parameters: ',
     f(x_initial))
 
+def perturb(x0):
+    for i in range(1000):
+        x0_perturbed = np.random.normal(1, 0.1, len(x0)) * x0
+        if np.isfinite(log_posterior(x0_perturbed)):
+            return x0_perturbed
+    raise ValueError('Too many iterations')
+
 #
 # Run
 #
-b = myokit.Benchmarker()
+b = myokit.tools.Benchmarker()
 repeats = args.repeats
 params, scores = [], []
 times = []
@@ -156,8 +171,7 @@ for i in range(repeats):
 
     # Choose random starting point
     if i < 10:
-        fac = np.random.normal(1.0, 0.1, len(x_initial))
-        q0 = fac*x_initial
+        q0 = perturb(x_initial)
     else:
         q0 = log_prior.sample()    # Search space
 
@@ -166,7 +180,7 @@ for i in range(repeats):
         f, q0, method=pints.CMAES)
     opt.set_log_to_file(filename + '-log-' + str(i) + '.txt')
     opt.set_max_iterations(None)
-    opt.set_parallel(True)
+    opt.set_parallel(parallel)
 
     # Run optimisation
     try:
